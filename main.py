@@ -13,9 +13,9 @@ def main():
     rrtObj = rrt.RRT((100,100),init_node,1,r)
     rrtTree = rrtObj.constructRRT()
 
-    #Plot the Tree
-    # pltObj = plot.Plotter(rrtObj,(100,100))
-    # pltObj.plotRRT()
+    #Plot the Tree and save a gif to images folder
+    pltObj = plot.Plotter(rrtObj,(100,100))
+    pltObj.plotRRT()
 
 if __name__ == "__main__":
     main()

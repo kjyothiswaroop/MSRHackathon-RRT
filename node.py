@@ -4,6 +4,3 @@ class Node:
         self.parent = None
         self.x = x
         self.y = y
-    
-
-

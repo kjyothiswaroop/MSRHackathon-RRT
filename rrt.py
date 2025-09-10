@@ -11,15 +11,8 @@ class RRT:
         self.vertices = vertices
         self.rrt = []
         self.dist = 0
-
-        # Matplotlib setup
-        self.fig, self.ax = plt.subplots()
-        self.ax.set_xlim(0, self.d_x)
-        self.ax.set_ylim(0, self.d_y)
-        self.ax.set_aspect('equal')
-        self.ax.set_title("RRT Growth")
-        self.ax.plot(self.q_int.x, self.q_int.y, 'go', markersize=6)  # root node
-
+        self.randoms = []
+        
     def constructRRT(self):
         '''Function to construct RRT Tree'''
         self.rrt.append(self.q_int)
@@ -32,19 +25,8 @@ class RRT:
             q_new = self.newConfiguration(q_near,q_rand)
             if q_new :
                 self.rrt.append(q_new)
-
-                # Plot the new line from parent to q_new
-                # self.ax.plot([q_near.x, q_new.x], [q_near.y, q_new.y], 'b-', alpha=0.7)
-                # Plot the random sample point briefly
-                rand_plot, = self.ax.plot(q_rand[0], q_rand[1], 'ro', markersize=4)
-                new_plot, = self.ax.plot(q_new.x,q_new.y,'bo',markersize=5)
-                self.ax.plot([q_near.x, q_new.x], [q_near.y, q_new.y], 'b-', alpha=0.7)
-                plt.pause(0.1)  # small delay to animate
-                rand_plot.remove()  # remove red point after plotting
-                new_plot.remove()
+                self.randoms.append(q_rand)
                 i = i+1
-
-        plt.show()
 
             
     def randomConfiguration(self):
