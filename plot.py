@@ -20,13 +20,14 @@ class Plotter:
 
         self.ax.set_xlim(0,self.d_x)
         self.ax.set_ylim(0,self.d_y)
-        self.ax.set_aspect('equal')
-        self.ax.set_title("RRT Generation") 
+        self.ax.set_aspect('equal') 
+        self.ax.set_title(f"RRT Generation {self.vertices} step")
 
         self.ax.plot(self.rrt[0].x,self.rrt[0].y,'go',markersize=5)
         self.rrt.pop(0)
         frames = []
         for i,node in enumerate(self.rrt):
+            self.ax.set_xlabel(f"Step : {i+1}")
             if node.parent is not None:
                 rand_plot, = self.ax.plot(self.randoms[i][0],self.randoms[i][1],'ro', markersize=4)
                 self.ax.plot(node.x,node.y,'bo',markersize=2)
