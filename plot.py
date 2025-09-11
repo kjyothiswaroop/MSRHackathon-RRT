@@ -31,7 +31,7 @@ class Plotter:
 
         if self.circles:
             for circle in self.circles:
-                self.ax.add_patch(patch.Circle((circle.c_x,circle.c_y),circle.radius,color='blue',clip_on=False))
+                self.ax.add_patch(patch.Circle((circle.c_x,circle.c_y),circle.radius,color='black',clip_on=False))
 
         for i,node in enumerate(self.rrt):
             self.ax.set_xlabel(f"Step : {i+1}")
